@@ -1,0 +1,46 @@
+module "container_definition" {
+  source  = "cloudposse/ecs-container-definition/aws"
+  version = "0.45.0"
+
+  container_name               = var.name
+  container_image              = local.container_image
+  command                      = var.command
+  entrypoint                   = var.entrypoint
+  container_memory             = var.container_memory
+  container_cpu                = var.container_cpu
+  ulimits                      = var.ulimits
+  port_mappings                = var.port_mappings
+  log_configuration            = local.log_config_aws_logs
+  container_memory_reservation = var.container_memory_reservation
+  essential                    = var.essential
+  readonly_root_filesystem     = var.readonly_root_filesystem
+  environment                  = var.environment
+  privileged                   = var.privileged
+  extra_hosts                  = var.extra_hosts
+  hostname                     = var.hostname
+  pseudo_terminal              = var.pseudo_terminal
+  interactive                  = var.interactive
+  container_definition         = var.container_definition
+  healthcheck                  = var.healthcheck
+  working_directory            = var.working_directory
+  map_environment              = var.map_environment
+  environment_files            = var.environment_files
+  secrets                      = var.secrets
+  linux_parameters             = var.linux_parameters
+  firelens_configuration       = var.firelens_configuration
+  mount_points                 = var.mount_points
+  dns_servers                  = var.dns_servers
+  dns_search_domains           = var.dns_search_domains
+  repository_credentials       = var.repository_credentials
+  volumes_from                 = var.volumes_from
+  links                        = var.links
+  user                         = var.user
+  container_depends_on         = var.container_depends_on
+  docker_labels                = var.docker_labels
+  start_timeout                = var.start_timeout
+  stop_timeout                 = var.stop_timeout
+  system_controls              = var.system_controls
+  disable_networking           = var.disable_networking
+  docker_security_options      = var.docker_security_options
+}
+
