@@ -15,7 +15,7 @@ variable "autoscale_predefined_metric" {
 variable "name" { default = "ecs-service" }
 variable "tags" { default = {} }
 variable "task_definition_arn" {}
-
+variable "enable_autoscaling" { default = true }
 variable "vpc_id" {
   type        = string
   description = "The VPC ID where resources are created"

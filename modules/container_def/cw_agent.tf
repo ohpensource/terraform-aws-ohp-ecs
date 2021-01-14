@@ -12,7 +12,7 @@ module "cwagent_container_definition" {
 
 resource "aws_ssm_parameter" "cw_agent" {
   count = var.enable_cw_agent ? 1 : 0
-  name  = "${var.name}/ecs-cwagent"
+  name  = "/${var.name}/ecs-cwagent"
   type  = "String"
   value = "{\"logs\": {\"metrics_collected\": {\"emf\": {}}}}"
   tags  = var.tags

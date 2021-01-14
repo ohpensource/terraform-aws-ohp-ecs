@@ -36,20 +36,16 @@ variable "container_image_version" {
   default     = "latest"
 }
 
-variable "task_cpu" {
-  default     = 256
-  description = "Task CPU must be greater than sum of container CPU"
-}
-
-variable "task_memory" {
-  default     = 256
-  description = "Task memory must be greater than sum of container memory"
+variable "container_cpu" {
+  # https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html#fargate-task-defs
+  description = "(Optional) The number of cpu units to reserve for the container. This is optional for tasks using Fargate launch type and the total amount of container_cpu of all containers in a task will need to be lower than the task-level cpu value"
+  default     = 512 # 1 vCPU 
 }
 
 variable "container_memory" {
-  type        = number
-  description = "The amount of memory (in MiB) to allow the container to use. This is a hard limit, if the container attempts to exceed the container_memory, the container is killed. This field is optional for Fargate launch type and the total amount of container_memory of all containers in a task will need to be lower than the task memory value"
-  default     = null
+  # https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html#fargate-task-defs
+  description = "(Optional) The amount of memory (in MiB) to allow the container to use. This is a hard limit, if the container attempts to exceed the container_memory, the container is killed. This field is optional for Fargate launch type and the total amount of container_memory of all containers in a task will need to be lower than the task memory value"
+  default     = 1024 # 8 GB
 }
 
 variable "container_memory_reservation" {
@@ -89,11 +85,7 @@ variable "healthcheck" {
   default     = null
 }
 
-variable "container_cpu" {
-  type        = number
-  description = "The number of cpu units to reserve for the container. This is optional for tasks using Fargate launch type and the total amount of container_cpu of all containers in a task will need to be lower than the task-level cpu value"
-  default     = 0
-}
+
 
 variable "essential" {
   type        = bool

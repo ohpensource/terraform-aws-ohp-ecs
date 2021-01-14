@@ -43,12 +43,12 @@ variable "network_mode" {
 }
 
 variable "task_cpu" {
-  default     = 256
+  default     = 1024
   description = "Task CPU must be greater than sum of container CPU"
 }
 
 variable "task_memory" {
-  default     = 256
+  default     = 2048
   description = "Task memory must be greater than sum of container memory"
 }
 

@@ -6,12 +6,14 @@ Includes:
 
 * Cluster
 * Task
+* Task Autoscaling
 * Container Definition
 * Servcice
+* ECR (WIP)
 
 ## Usage
 
-blah blah
+
 
 ## Documentation
 
