@@ -1,6 +1,5 @@
 #!/bin/bash
 chmod +x scripts/*.sh
-WKDIR=$PWD
 
 cd ./modules || exit
 for f in *; do
@@ -9,8 +8,8 @@ for f in *; do
     cd "$f" || exit
     echo -e "\n## Init module $f"
     if ! terraform init -input=false -backend=false; then exit $?; fi
-    source $WKDIR/scripts/lint.sh
-    source $WKDIR/scripts/validate.sh
+    source ../../scripts/lint.sh
+    source ../../scripts/validate.sh
     cd ..
   fi
 done
