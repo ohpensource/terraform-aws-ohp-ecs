@@ -23,10 +23,9 @@ jobs:
       - run: 
           name: lint-validate
           command: |
-            chmod +x .circleci/lint.sh
-            chmod +x .circleci/validate.sh
-            source .circleci/lint.sh
-            source .circleci/validate.sh
+            chmod +x ./scripts/*.sh
+            source ./scripts/lint.sh
+            source ./scripts/validate.sh
   bump:
     docker:
       - image: circleci/python
@@ -40,8 +39,8 @@ jobs:
       - run:
           name: bump version
           command: |
-            chmod +x .circleci/bump.sh
-            source .circleci/bump.sh
+            chmod +x ./scripts/bump.sh
+            source ./scripts/bump.sh
 
 workflows:
   version: 2

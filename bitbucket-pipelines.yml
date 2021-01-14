@@ -20,9 +20,10 @@ definitions:
                 if ! terraform init -input=false -backend=false; then exit $?; fi
                 cd ..
               fi
+            cd ..
             done
           - |
-            chmod +x scripts/*.sh
+            chmod +x ./scripts/*.sh
             source ./scripts/lint.sh
             source ./scripts/validate.sh
     - step: &bump
@@ -36,7 +37,7 @@ definitions:
           - set -o pipefail
           - |
             # Update version
-            chmod +x scripts/bump.sh
+            chmod +x ./scripts/bump.sh
             source ./scripts/bump.sh
 pipelines:
   branches:
