@@ -31,3 +31,6 @@ override.tf.json
 .DS_Store
 
 _archive/
+
+scripts/git_init.sh
+scripts/tfm_init.sh
