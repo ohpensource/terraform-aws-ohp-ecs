@@ -12,7 +12,16 @@ definitions:
         image: hashicorp/terraform:latest
         script:
           - |
-            cd ./modules
+            cd ./modules || exit
+            for f in *; do
+              if [ -d "$f" ]; then
+                # cycle through each module dir and initialize
+                cd "$f" || exit
+                if ! terraform init -input=false -backend=false; then exit $?; fi
+                cd ..
+              fi
+            done
+            cd ./modules || exit
             for f in *; do
               if [ -d "$f" ]; then
                 # cycle through each module dir and initialize
@@ -24,8 +33,7 @@ definitions:
             done
             cd ..
           - |
-            chmod +x .bitbucket/lint.sh
-            chmod +x .bitbucket/validate.sh
+            chmod +x .bitbucket/*.sh
             source ./.bitbucket/lint.sh
             source ./.bitbucket/validate.sh
     - step: &bump
