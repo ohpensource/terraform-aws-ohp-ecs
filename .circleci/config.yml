@@ -12,18 +12,17 @@ jobs:
             find . -type f -name '*.sh' | xargs shellcheck --external-sources
   terraform:
     docker:
-      - image: hashicorp/terraform:0.13.5
+      - image: hashicorp/terraform:latest
     steps:
       - checkout
       - run: 
           name: init
           command: |
-            terraform init -input=false -backend=false
-            if [ $? != "0" ]; then exit $?; fi
+            chmod +x scripts/*.sh
+            source ./scripts/tfm_init.sh
       - run: 
           name: lint-validate
           command: |
-            chmod +x ./scripts/*.sh
             source ./scripts/lint.sh
             source ./scripts/validate.sh
   bump:
