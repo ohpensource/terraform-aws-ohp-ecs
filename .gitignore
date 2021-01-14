@@ -33,4 +33,6 @@ override.tf.json
 _archive/
 
 scripts/git_init.sh
-scripts/tfm_init.sh
+**/.terraform.lock.hcl
+
+# modules/*/.terraform.lock.hcl
