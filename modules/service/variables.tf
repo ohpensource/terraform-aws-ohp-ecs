@@ -54,12 +54,6 @@ variable "container_port" {
   default     = 80
 }
 
-variable "nlb_container_port" {
-  type        = number
-  description = "The port on the container to allow via the ingress security group"
-  default     = 80
-}
-
 variable "subnet_ids" {
   type        = list(string)
   description = "Subnet IDs"

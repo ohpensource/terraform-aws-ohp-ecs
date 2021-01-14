@@ -29,8 +29,8 @@ resource "aws_security_group_rule" "alb" {
 resource "aws_security_group_rule" "nlb" {
   count             = var.use_nlb_cidr_blocks ? 1 : 0
   type              = "ingress"
-  from_port         = var.nlb_container_port
-  to_port           = var.nlb_container_port
+  from_port         = var.container_port
+  to_port           = var.container_port
   protocol          = "tcp"
   cidr_blocks       = var.nlb_cidr_blocks
   security_group_id = aws_security_group.ecs_service.id
