@@ -22,9 +22,9 @@ definitions:
               fi
             done
           - |
-            chmod +x .bitbucket/*.sh
-            source ./.bitbucket/lint.sh
-            source ./.bitbucket/validate.sh
+            chmod +x scripts/*.sh
+            source ./scripts/lint.sh
+            source ./scripts/validate.sh
     - step: &bump
         name: bump module version
         image:
@@ -36,8 +36,8 @@ definitions:
           - set -o pipefail
           - |
             # Update version
-            chmod +x .bitbucket/bump.sh
-            source .bitbucket/bump.sh
+            chmod +x scripts/bump.sh
+            source ./scripts/bump.sh
 pipelines:
   branches:
     feature/*:
