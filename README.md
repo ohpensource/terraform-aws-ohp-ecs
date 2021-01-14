@@ -4,13 +4,16 @@ Current version: v0.1.0
 
 Includes:
 
-* ECS Cluster
-* ECR Repository (wip)
-* Fargate Task
+* Cluster
+* Task
+* Task Autoscaling
+* Container Definition
+* Servcice
+* ECR (WIP)
 
 ## Usage
 
-blah blah
+
 
 ## Documentation
 
