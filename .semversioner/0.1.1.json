@@ -1,0 +1,6 @@
+[
+  {
+    "description": " add variables for cw and xray container images",
+    "type": "patch"
+  }
+]
