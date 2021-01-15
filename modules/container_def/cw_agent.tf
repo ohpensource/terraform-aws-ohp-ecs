@@ -4,7 +4,7 @@ module "cwagent_container_definition" {
   version = "0.45.0"
 
   container_name    = "cloudwatch-agent"
-  container_image   = "amazon/cloudwatch-agent:latest"
+  container_image   = var.cw_agent_container_image
   ulimits           = var.ulimits
   log_configuration = local.log_config_aws_logs
   secrets           = [{ name = "CW_CONFIG_CONTENT", valueFrom = aws_ssm_parameter.cw_agent[count.index].name }]
@@ -17,3 +17,4 @@ resource "aws_ssm_parameter" "cw_agent" {
   value = "{\"logs\": {\"metrics_collected\": {\"emf\": {}}}}"
   tags  = var.tags
 }
+

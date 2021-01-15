@@ -4,7 +4,8 @@ module "xray_container_definition" {
   version = "0.45.0"
 
   container_name    = "xray-daemon"
-  container_image   = "amazon/aws-xray-daemon:latest"
+  container_image   = var.xray_container_image
   ulimits           = var.ulimits
   log_configuration = local.log_config_aws_logs
 }
+

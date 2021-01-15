@@ -9,6 +9,24 @@ variable "tags" {
   description = "Map of tags to apply to resources"
 }
 
+# Container Images
+variable "cw_agent_container_image" {
+  default = "amazon/cloudwatch-agent:latest"
+}
+
+variable "xray_container_image" {
+  default = "amazon/aws-xray-daemon:latest"
+}
+
+variable "container_image" {
+  type        = string
+  description = "The image used to start the container. Images in the Docker Hub registry available by default"
+}
+
+variable "container_image_version" {
+  description = "Container image version to deploy"
+  default     = "latest"
+}
 
 # Cloudwatch variables
 variable "cloudwatch_log_group_name" {
@@ -26,15 +44,6 @@ variable "enable_cw_agent" {
 }
 
 # Task Variables
-variable "container_image" {
-  type        = string
-  description = "The image used to start the container. Images in the Docker Hub registry available by default"
-}
-
-variable "container_image_version" {
-  description = "Container image version to deploy"
-  default     = "latest"
-}
 
 variable "container_cpu" {
   # https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html#fargate-task-defs
