@@ -2,19 +2,22 @@
 
 
 variable "name" {
-  description = "The name of the task. Up to 255 characters ([a-z], [A-Z], [0-9], -, _ allowed)"
+  type        = string
+  description = "(Required) The name of the task. Up to 255 characters ([a-z], [A-Z], [0-9], -, _ allowed)"
 }
 variable "tags" {
   type        = map(any)
-  description = "Map of tags to apply to resources"
+  description = "(Optional) Key-value map of resource tags"
 }
 
 # Container Images
 variable "cw_agent_container_image" {
+  type    = string
   default = "amazon/cloudwatch-agent:latest"
 }
 
 variable "xray_container_image" {
+  type    = string
   default = "amazon/aws-xray-daemon:latest"
 }
 
@@ -24,21 +27,25 @@ variable "container_image" {
 }
 
 variable "container_image_version" {
+  type        = string
   description = "Container image version to deploy"
   default     = "latest"
 }
 
 # Cloudwatch variables
 variable "cloudwatch_log_group_name" {
+  type        = string
   description = "Cloudwatch log group name"
 }
 
 variable "enable_xray" {
+  type        = bool
   description = "Enable xray sidecar for tracing"
   default     = false
 }
 
 variable "enable_cw_agent" {
+  type        = bool
   description = "Enable Cloudwatch metric collection"
   default     = false
 }
@@ -46,12 +53,14 @@ variable "enable_cw_agent" {
 # Task Variables
 
 variable "container_cpu" {
+  type = number
   # https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html#fargate-task-defs
   description = "(Optional) The number of cpu units to reserve for the container. This is optional for tasks using Fargate launch type and the total amount of container_cpu of all containers in a task will need to be lower than the task-level cpu value"
   default     = 512 # 1 vCPU 
 }
 
 variable "container_memory" {
+  type = number
   # https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html#fargate-task-defs
   description = "(Optional) The amount of memory (in MiB) to allow the container to use. This is a hard limit, if the container attempts to exceed the container_memory, the container is killed. This field is optional for Fargate launch type and the total amount of container_memory of all containers in a task will need to be lower than the task memory value"
   default     = 1024 # 8 GB

@@ -1,21 +1,70 @@
 # Autoscaling
 
-variable "min_capacity" { default = 1 }
-variable "max_capacity" { default = 4 }
-variable "target_value" { default = 75 }
-variable "disable_scale_in" { default = false }
-variable "scale_in_cooldown" { default = 60 }
-variable "scale_out_cooldown" { default = 60 }
+variable "min_capacity" {
+  type        = number
+  description = "(Required) Autoscaling - The min capacity of the scalable target"
+  default     = 1
+}
+
+variable "max_capacity" {
+  type        = number
+  default     = 4
+  description = "(Required) Autoscaling - The max capacity of the scalable target"
+}
+
+variable "target_value" {
+  type          = number
+  default       = 75
+  dedescription = "(Required) Autoscaling policy - The target value for the metric"
+}
+
+variable "disable_scale_in" {
+  type           = bool
+  default        = false
+  desdescription = "(Optional) Autoscaling - Indicates whether scale in by the target tracking policy is disabled. If the value is true, scale in is disabled and the target tracking policy won't remove capacity from the scalable resource. Otherwise, scale in is enabled and the target tracking policy can remove capacity from the scalable resource"
+}
+
+variable "scale_in_cooldown" {
+  type            = number
+  default         = 60
+  descdescription = "(Optional) Autoscaling - The amount of time, in seconds, after a scale in activity completes before another scale in activity can start"
+}
+
+variable "scale_out_cooldown" {
+  type        = number
+  default     = 60
+  description = "(Optional) Autoscaling - The amount of time, in seconds, after a scale out activity completes before another scale out activity can start"
+}
+
 variable "autoscale_predefined_metric" {
+  type        = string
   default     = "ECSServiceAverageCPUUtilization"
-  description = " ECSServiceAverageCPUUtilization, ALBRequestCountPerTarget, ECSServiceAverageMemoryUtilization"
+  description = "(Optional) Autoscaling - A predefined metric - ECSServiceAverageCPUUtilization, ALBRequestCountPerTarget, ECSServiceAverageMemoryUtilization"
 }
 
 # Service
-variable "name" { default = "ecs-service" }
-variable "tags" { default = {} }
-variable "task_definition_arn" {}
-variable "enable_autoscaling" { default = true }
+variable "name" {
+  type        = string
+  default     = "ecs-service"
+  description = "(Required) The name of the service"
+}
+
+variable "tags" {
+  type        = map(any)
+  description = "(Optional) Key-value map of resource tags"
+}
+
+variable "task_definition_arn" {
+  type        = string
+  description = "(Required) The family and revision (family:revision) or full ARN of the task definition that you want to run in your service. Required unless using the EXTERNAL deployment controller. If a revision is not specified, the latest ACTIVE revision is used"
+}
+
+variable "enable_autoscaling" {
+  type           = bool
+  default        = true
+  desdescription = "(Optional) Enable autoscaling"
+}
+
 variable "vpc_id" {
   type        = string
   description = "The VPC ID where resources are created"
@@ -147,9 +196,6 @@ variable "health_check_grace_period_seconds" {
   description = "Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 7200. Only valid for services configured to use load balancers"
   default     = 300
 }
-
-
-
 
 variable "assign_public_ip" {
   type        = bool

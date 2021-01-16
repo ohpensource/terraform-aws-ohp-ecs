@@ -39,21 +39,27 @@ variable "task_exec_role_policy_arns_extra" {
 
 # Task Variables
 variable "network_mode" {
-  default = "awsvpc"
+  type        = string
+  default     = "awsvpc"
+  description = "(Optional) The Docker networking mode to use for the containers in the task. "
 }
 
 variable "task_cpu" {
+  type        = number
   default     = 1024
-  description = "Task CPU must be greater than sum of container CPU"
+  description = "(Optional) The number of cpu units used by the task. If the requires_compatibilities is FARGATE this field is required. Task CPU must be greater than sum of container CPU"
 }
 
 variable "task_memory" {
+  type        = number
   default     = 2048
-  description = "Task memory must be greater than sum of container memory"
+  description = "(Optional) The amount (in MiB) of memory used by the task. If the requires_compatibilities is FARGATE this field is required. Task memory must be greater than sum of container memory"
 }
 
 variable "task_capabilities" {
-  default = ["FARGATE"]
+  type        = list(any)
+  description = "(Optional) A set of launch types required by the task. The valid values are EC2 and FARGATE"
+  default     = ["FARGATE"]
 }
 
 variable "container_definition_json" {
