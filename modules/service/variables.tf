@@ -13,21 +13,21 @@ variable "max_capacity" {
 }
 
 variable "target_value" {
-  type          = number
-  default       = 75
-  dedescription = "(Required) Autoscaling policy - The target value for the metric"
+  type        = number
+  default     = 75
+  description = "(Required) Autoscaling policy - The target value for the metric"
 }
 
 variable "disable_scale_in" {
-  type           = bool
-  default        = false
-  desdescription = "(Optional) Autoscaling - Indicates whether scale in by the target tracking policy is disabled. If the value is true, scale in is disabled and the target tracking policy won't remove capacity from the scalable resource. Otherwise, scale in is enabled and the target tracking policy can remove capacity from the scalable resource"
+  type        = bool
+  default     = false
+  description = "(Optional) Autoscaling - Indicates whether scale in by the target tracking policy is disabled. If the value is true, scale in is disabled and the target tracking policy won't remove capacity from the scalable resource. Otherwise, scale in is enabled and the target tracking policy can remove capacity from the scalable resource"
 }
 
 variable "scale_in_cooldown" {
-  type            = number
-  default         = 60
-  descdescription = "(Optional) Autoscaling - The amount of time, in seconds, after a scale in activity completes before another scale in activity can start"
+  type        = number
+  default     = 60
+  description = "(Optional) Autoscaling - The amount of time, in seconds, after a scale in activity completes before another scale in activity can start"
 }
 
 variable "scale_out_cooldown" {
@@ -60,9 +60,9 @@ variable "task_definition_arn" {
 }
 
 variable "enable_autoscaling" {
-  type           = bool
-  default        = true
-  desdescription = "(Optional) Enable autoscaling"
+  type        = bool
+  default     = true
+  description = "(Optional) Enable autoscaling"
 }
 
 variable "vpc_id" {
