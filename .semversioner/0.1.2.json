@@ -1,0 +1,6 @@
+[
+  {
+    "description": " add container insights var, update variable descriptions",
+    "type": "patch"
+  }
+]
