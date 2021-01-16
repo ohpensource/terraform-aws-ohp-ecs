@@ -1,6 +1,10 @@
 # Changelog
 Note: version releases in the 0.x.y range may introduce breaking changes.
 
+## 0.1.3
+
+- patch: fix var names
+
 ## 0.1.2
 
 - patch:  add container insights var, update variable descriptions
