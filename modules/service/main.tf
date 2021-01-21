@@ -1,7 +1,7 @@
 resource "aws_ecs_service" "main" {
   name                               = var.name
   task_definition                    = var.task_definition_arn
-  desired_count                      = var.desired_count
+  desired_count                      = var.scheduling_strategy == "REPLICA" ? var.desired_count : null
   deployment_maximum_percent         = var.deployment_maximum_percent
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
   health_check_grace_period_seconds  = var.health_check_grace_period_seconds
