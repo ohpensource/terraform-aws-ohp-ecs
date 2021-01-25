@@ -8,12 +8,12 @@ Includes:
 * Task
 * Task Autoscaling
 * Container Definition
-* Servcice
+* Service
 * ECR (WIP)
 
 ## Usage
 
-
+See module folder README.md
 
 ## Documentation
 

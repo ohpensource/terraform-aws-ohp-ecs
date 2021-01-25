@@ -169,7 +169,7 @@ variable "network_mode" {
 
 variable "desired_count" {
   type        = number
-  description = "The number of instances of the task definition to place and keep running"
+  description = "The number of instances of the task definition to place and keep running. Ignored when autoscaling enabled"
   default     = 1
 }
 

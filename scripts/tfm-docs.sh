@@ -1,2 +1,2 @@
 #!/bin/bash
-terraform-docs --sort-inputs-by-required markdown table ./ > README.md
+terraform-docs --sort-by-required markdown table ./ > README.md
