@@ -1,0 +1,6 @@
+[
+  {
+    "description": " update validate script, remove dup install",
+    "type": "patch"
+  }
+]

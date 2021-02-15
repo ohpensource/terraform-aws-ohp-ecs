@@ -1,6 +1,6 @@
 # Terraform Module - ECS
 
-Current version: v0.2.0
+Current version: v0.2.1
 
 Includes:
 
