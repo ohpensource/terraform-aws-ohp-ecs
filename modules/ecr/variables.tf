@@ -8,12 +8,12 @@ variable "tags" {
 }
 
 variable "image_tag_mutability" {
-  default     = "MUTABLE"
+  default     = "IMMUTABLE"
   description = "Image tag immutablity MUTABLE/IMMUTABLE"
 }
 
 variable "scan_image_on_push" {
-  default     = false
+  default     = true
   description = "Scan image for vulnerabilities on push"
 }
 
