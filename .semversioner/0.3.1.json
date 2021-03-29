@@ -1,0 +1,6 @@
+[
+  {
+    "description": "lanz-602  make images immutable, scan on upload",
+    "type": "patch"
+  }
+]
