@@ -64,6 +64,7 @@ data "aws_iam_policy_document" "ecr_policy_auth" {
 # IAM User policies
 
 data "aws_iam_policy_document" "ecr_pull_user_policy" {
+  count = local.create_pull_user
   statement {
     sid = "1"
     actions = [
@@ -85,6 +86,7 @@ data "aws_iam_policy_document" "ecr_pull_user_policy" {
 }
 
 data "aws_iam_policy_document" "ecr_push_user_policy" {
+  count = local.create_push_user
   statement {
     sid = "1"
     actions = [
@@ -121,6 +123,7 @@ data "aws_iam_policy_document" "ecr_push_user_policy" {
 # IAM Roles
 
 data "aws_iam_policy_document" "assume_role_policy_pull" {
+  count = local.create_pull_role
   statement {
     actions = ["sts:AssumeRole"]
     effect  = "Allow"
@@ -132,6 +135,7 @@ data "aws_iam_policy_document" "assume_role_policy_pull" {
 }
 
 data "aws_iam_policy_document" "assume_role_policy_push" {
+  count = local.create_push_role
   statement {
     actions = ["sts:AssumeRole"]
     effect  = "Allow"

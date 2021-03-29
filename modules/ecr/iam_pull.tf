@@ -6,30 +6,30 @@ resource "aws_iam_access_key" "pull" {
 
 resource "aws_iam_user" "pull" {
   count = local.create_pull_user
-  name  = var.pull_iam_user_name
+  name  = local.pull_iam_user_name
   tags = merge(
     var.tags,
     map(
-      "Name", var.pull_iam_user_name
+      "Name", local.pull_iam_user_name
     )
   )
 }
 
 resource "aws_iam_user_policy" "pull" {
   count = local.create_pull_user
-  name  = "${var.pull_iam_user_name}-ecr-policy"
+  name  = "${local.pull_iam_user_name}-ecr-policy"
   user  = aws_iam_user.pull.*.name[count.index]
 
-  policy = data.aws_iam_policy_document.ecr_pull_user_policy.json
+  policy = data.aws_iam_policy_document.ecr_pull_user_policy.*.json[count.index]
 }
 
 resource "aws_secretsmanager_secret" "pull" {
   count = local.create_pull_user
-  name  = var.pull_iam_user_name
+  name  = local.pull_iam_user_name
   tags = merge(
     var.tags,
     map(
-      "Name", var.pull_iam_user_name
+      "Name", local.pull_iam_user_name
     )
   )
 }

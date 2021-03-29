@@ -9,7 +9,7 @@ Includes:
 * Task Autoscaling
 * Container Definition
 * Service
-* ECR (WIP)
+* ECR
 
 ## Usage
 

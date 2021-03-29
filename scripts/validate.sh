@@ -2,7 +2,7 @@
 export AWS_DEFAULT_REGION="eu-west-1"
 
 # tflint
-if ! command -v tflint &> /dev/null
+if ! command -v tflint >/dev/null 2>&1;
 then
     echo "tflint could not be found - installing"
     apk add --update openssl

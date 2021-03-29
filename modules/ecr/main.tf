@@ -1,6 +1,6 @@
 resource "aws_ecr_repository" "main" {
   name                 = var.name
-  image_tag_mutability = "MUTABLE"
+  image_tag_mutability = var.image_tag_mutability
 
   image_scanning_configuration {
     scan_on_push = var.scan_image_on_push
@@ -15,15 +15,12 @@ resource "aws_ecr_repository" "main" {
 
 resource "aws_ecr_lifecycle_policy" "main" {
   repository = aws_ecr_repository.main.name
-
-  policy = <<EOF
-    ${local.lifecycle_policy}
-  EOF
+  policy     = local.lifecycle_policy
 }
 
 resource "aws_ecr_repository_policy" "main" {
-  count      = local.create_default_ecr_policy
+  count      = local.create_ecr_policy
   repository = aws_ecr_repository.main.name
 
-  policy = local.default_ecr_policy
+  policy = local.ecr_policy
 }
