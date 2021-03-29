@@ -6,30 +6,31 @@ resource "aws_iam_access_key" "push" {
 
 resource "aws_iam_user" "push" {
   count = local.create_push_user
-  name  = var.push_iam_user_name
+  name  = local.push_iam_user_name
   tags = merge(
     var.tags,
     map(
-      "Name", var.push_iam_user_name
+      "Name", local.push_iam_user_name
     )
   )
 }
 
 resource "aws_iam_user_policy" "push" {
   count = local.create_push_user
-  name  = "${var.push_iam_user_name}-ecr-policy"
+  name  = "${local.push_iam_user_name}-ecr-policy"
   user  = aws_iam_user.push.*.name[count.index]
 
-  policy = data.aws_iam_policy_document.ecr_push_user_policy.json
+  policy = data.aws_iam_policy_document.ecr_push_user_policy.*.json[count.index]
+
 }
 
 resource "aws_secretsmanager_secret" "push" {
   count = local.create_push_user
-  name  = var.push_iam_user_name
+  name  = local.push_iam_user_name
   tags = merge(
     var.tags,
     map(
-      "Name", var.push_iam_user_name
+      "Name", local.push_iam_user_name
     )
   )
 }

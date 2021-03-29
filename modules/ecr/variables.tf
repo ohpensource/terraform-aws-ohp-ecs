@@ -18,8 +18,8 @@ variable "scan_image_on_push" {
 }
 
 variable "lifecycle_policy" {
-  default     = ""
-  description = "ECR lifecycle policy (json) - include <<EOF and EOF"
+  default     = null
+  description = "ECR lifecycle policy (jsonencoded)"
 }
 
 variable "expire_untagged_image_days" {
@@ -43,26 +43,91 @@ variable "ecr_policy_principals" {
 }
 
 variable "ecr_policy_principal_type" {
-  default     = ["AWS"]
+  default     = "AWS"
   description = "List of principals allowed to use the ECR policy"
 }
 
 variable "push_iam_user_name" {
-  default     = ""
-  description = "ECR Push User name  - leave blank if not required"
+  default     = null
+  description = "ECR Push User name - leave blank for default name based on var.name"
 }
 
 variable "pull_iam_user_name" {
-  default     = ""
-  description = "ECR Pull User name  - leave blank if not required"
+  default     = null
+  description = "ECR Pull User name - leave blank for default name based on var.name"
 }
 
-variable "ecr_policy_type" {
-  default     = ""
-  description = "pull or push - leave blank if not required"
+variable "push_iam_role_name" {
+  default     = null
+  description = "ECR Push Role name - leave blank for default name based on var.name"
 }
 
-variable "ecr_pull_role_principal_type" { default = [""] }
-variable "ecr_pull_role_principals" { default = [""] }
-variable "ecr_push_role_principal_type" { default = [""] }
-variable "ecr_push_role_principals" { default = [""] }
+variable "pull_iam_role_name" {
+  default     = null
+  description = "ECR Pull Role name - leave blank for default name based on var.name"
+}
+
+variable "default_ecr_policy_type" {
+  default     = null
+  description = "pull or push"
+}
+
+variable "custom_ecr_policy" {
+  default     = null
+  description = "Json formatted ECR policy - overrides any default policy"
+}
+
+variable "ecr_pull_role_principal_type" {
+  default = "*"
+}
+
+variable "ecr_pull_role_principals" {
+  type    = list(any)
+  default = ["*"]
+}
+
+variable "ecr_push_role_principal_type" {
+  default = "*"
+}
+
+variable "ecr_push_role_principals" {
+  type    = list(any)
+  default = ["*"]
+}
+
+variable "ecr_pull_role_policy_arn" {
+  type        = string
+  default     = null
+  description = "Arn of ECR policy to attach to pull role"
+}
+
+variable "ecr_push_role_policy_arn" {
+  type        = string
+  default     = null
+  description = "Arn of ECR policy to attach to push role"
+}
+
+variable "create_iam_user_push" {
+  type    = bool
+  default = false
+}
+
+variable "create_iam_user_pull" {
+  type    = bool
+  default = false
+}
+
+variable "create_iam_role_push" {
+  type    = bool
+  default = false
+}
+
+variable "create_iam_role_pull" {
+  type    = bool
+  default = false
+}
+
+variable "create_ecr_policy" {
+  type    = bool
+  default = false
+}
