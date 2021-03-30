@@ -1,6 +1,10 @@
 # Changelog
 Note: version releases in the 0.x.y range may introduce breaking changes.
 
+## 1.0.1
+
+- patch: lanz-602  make tags required
+
 ## 1.0.0
 
 - major: lanz-602  remove ecr - gets own repo
