@@ -51,7 +51,7 @@ variable "name" {
 
 variable "tags" {
   type        = map(any)
-  description = "(Optional) Key-value map of resource tags"
+  description = "(Required) Key-value map of resource tags"
 }
 
 variable "task_definition_arn" {
