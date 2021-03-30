@@ -3,7 +3,7 @@ variable "name" {
 }
 variable "tags" {
   type        = map(any)
-  description = "Map of tags to apply to resources"
+  description = "(Required) Map of tags to apply to resources"
 }
 
 # IAM Variables

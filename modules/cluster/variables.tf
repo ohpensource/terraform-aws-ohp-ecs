@@ -4,8 +4,7 @@ variable "name" {
 }
 variable "tags" {
   type        = map(any)
-  description = "Map of tags to apply to cluster"
-  default     = {}
+  description = "(Required) Map of tags to apply to cluster"
 }
 variable "enable_container_insights" {
   type        = bool
