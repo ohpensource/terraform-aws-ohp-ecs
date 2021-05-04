@@ -1,6 +1,10 @@
 # Changelog
 Note: version releases in the 0.x.y range may introduce breaking changes.
 
+## 2.0.1
+
+- patch: lanz-974  make healthchecks depend on elb
+
 ## 2.0.0
 
 - major: lanz-974  add iam role to service
