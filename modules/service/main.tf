@@ -4,7 +4,7 @@ resource "aws_ecs_service" "main" {
   desired_count                      = var.scheduling_strategy == "REPLICA" ? var.desired_count : null
   deployment_maximum_percent         = var.deployment_maximum_percent
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
-  health_check_grace_period_seconds  = local.health_check_grace_period_seconds
+  health_check_grace_period_seconds  = var.health_check_grace_period_seconds
   launch_type                        = length(var.capacity_provider_strategies) > 0 ? null : var.launch_type
   platform_version                   = var.launch_type == "FARGATE" ? var.platform_version : null
   scheduling_strategy                = var.launch_type == "FARGATE" ? "REPLICA" : var.scheduling_strategy
