@@ -2,8 +2,8 @@ resource "aws_security_group" "ecs_service" {
   vpc_id      = var.vpc_id
   name        = "${var.name}-ecs-service"
   description = "${var.name}-ecs-service"
-  tags = merge(var.tags, map(
-    "Name", "${var.name}-ecs-service"
+  tags = merge(var.tags, tomap(
+    { "Name" = "${var.name}-ecs-service" }
   ))
 }
 

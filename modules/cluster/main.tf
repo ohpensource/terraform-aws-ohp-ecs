@@ -13,6 +13,6 @@ resource "aws_ecs_cluster" "main" {
     value = local.enable_container_insights
   }
 
-  tags = merge(var.tags, map("Name", var.name))
+  tags = merge(var.tags, tomap({ "Name" = var.name }))
 }
 
