@@ -8,6 +8,7 @@ resource "aws_appautoscaling_target" "main" {
 }
 
 resource "aws_appautoscaling_policy" "main" {
+  count              = var.enable_autoscaling ? 1 : 0
   name               = "scale-in-out"
   policy_type        = "TargetTrackingScaling"
   resource_id        = aws_appautoscaling_target.main.0.resource_id
