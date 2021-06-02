@@ -1,6 +1,10 @@
 # Changelog
 Note: version releases in the 0.x.y range may introduce breaking changes.
 
+## 2.1.0
+
+- minor: merged in feature/paym-4981 (pull request #8)
+
 ## 2.0.2
 
 - patch: lanz-974  remove hc grace period
